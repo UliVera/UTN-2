@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
 
 require('dotenv').config();
 
@@ -21,12 +22,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-// app.use('/users', usersRouter);
+app.use(session({
+  secret: '12341377afahfks9n520',
+  resave: false,
+  saveUninitialized: true
+}))
 
-app.get('/prueba', function (req,res){ 
-  res.send('Pagina de prueba')
-})
+ app.use('/', indexRouter);
+// app.use('/users', usersRouter);
 
 
 // catch 404 and forward to error handler
