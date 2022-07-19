@@ -7,6 +7,8 @@ var session = require('express-session');
 
 require('dotenv').config();
 
+var pool = require('./models/bd');
+
 var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 
@@ -30,6 +32,11 @@ app.use(session({
 
  app.use('/', indexRouter);
 // app.use('/users', usersRouter);
+
+// select
+// pool.query('select * from empleados').then(function(resultados){
+//   console.log(resultados)
+// });
 
 
 // catch 404 and forward to error handler
