@@ -6,11 +6,14 @@ var logger = require('morgan');
 var session = require('express-session');
 
 require('dotenv').config();
-
+var session = require('express-session');
 var pool = require('./models/bd');
 
 var indexRouter = require('./routes/index');
+var contactoRouter = require('./routes/contacto')
 // var usersRouter = require('./routes/users');
+var loginRouter = require('./routes/admin/login')
+var adminRouter = require('./routes/admin/novedades');
 
 var app = express();
 
@@ -30,8 +33,27 @@ app.use(session({
   saveUninitialized: true
 }))
 
+secured = async (req, res, next) => {
+  try {
+    console.log(req.session.id_usuario);
+    if (req.session.id_usuario) {
+      next();
+    } else {
+      res.redirect('/admin/login')
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
  app.use('/', indexRouter);
+ app.use('/contacto', contactoRouter);
 // app.use('/users', usersRouter);
+app.use('/admin/login', loginRouter);
+app.use('/admin/novedades',adminRouter, secured);
+
+// app.get('/contacto', function (req,res){
+// })
 
 // select
 // pool.query('select * from empleados').then(function(resultados){
