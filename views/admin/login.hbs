@@ -1,6 +1,6 @@
 {{!-- <link rel="stylesheet" href="/public/stylesheets/suplementos.css"> --}}
 
-<div class="container" style="margin: 150px 5;">
+<div class="container" style="margin: 150px auto;">
   <div class="row">
     <div class="col">
       <form action="/admin/login" method="post">
@@ -9,14 +9,14 @@
           <input type="text" class="form-control" id="usuario" aria-describedby="emailHelp" name="usuario">
         </div>
         <div class="form-group">
-          <label for="password">Password</label>
+          <label for="password">Contraseña</label>
           <input type="password" class="form-control" id="password" name="password">
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
       </form>
     
     {{#if error}}
-    <p >Usuario y/o contraseña incorrectos</p>
+    <p >Usuario y/o contraseña incorrectos.</p>
     {{/if}}
     </div>
   </div>

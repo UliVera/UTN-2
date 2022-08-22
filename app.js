@@ -3,11 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var session = require('express-session');
 
 require('dotenv').config();
 var session = require('express-session');
 var pool = require('./models/bd');
+var fileUpload = require('express-fileupload');
 
 var indexRouter = require('./routes/index');
 var contactoRouter = require('./routes/contacto')
@@ -46,20 +46,16 @@ secured = async (req, res, next) => {
   }
 }
 
+app.use(fileUpload({
+  useTempFiles: true,
+  tempFileDir: '/tmp/'
+}));
+
  app.use('/', indexRouter);
+ // app.use('/users', usersRouter);
+ app.use('/admin/login', loginRouter);
+ app.use('/admin/novedades',adminRouter, secured);
  app.use('/contacto', contactoRouter);
-// app.use('/users', usersRouter);
-app.use('/admin/login', loginRouter);
-app.use('/admin/novedades',adminRouter, secured);
-
-// app.get('/contacto', function (req,res){
-// })
-
-// select
-// pool.query('select * from empleados').then(function(resultados){
-//   console.log(resultados)
-// });
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

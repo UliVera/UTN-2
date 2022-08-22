@@ -1,21 +1,9 @@
-
 h1{
- font-size: 2.5em
-};
-h2{
-    font-size: 1.7em
-};
-h3{
-    font-size: 1em
-};
-p{
-    font-size: 1.25em
-};
+    font-size: 60px;
+}
 
-
-h5{
-    font-size: 1em;
-    color: black;
+.parrafo{
+    font-size: 20px;
 }
 
 .hero {
@@ -73,22 +61,9 @@ h5{
 .staff{
     background-color: gainsboro;
 }
-.card-img-top{
-    max-height: 400px;
-    min-height: 400px;
-}
 
-.col-md-4 {
+
+/* .col-md-4 {
     padding-left: 100px;
-}
-
-/* button{
-    font-size: 90px;
-    font-weight: bold;
-    padding: 100px 100px;
-    border-radius: 5px;
-    border: 2px solid rgba(0,0,0,0.3);
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-    color: white;
-    background-color: rgb(43, 159, 226);
 } */
+

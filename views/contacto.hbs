@@ -1,28 +1,27 @@
- <div id="contactanos" class="col-md-4 mt-4 mt-sm-0">
-                <h2>Contactanos</h2>
-                <form action="/" method="post">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="name">Nombre</label>
-                            <input type="text" class="form-control" name="name" id="nombre">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="surname">Apellido</label>
-                            <input type="text" class="form-control" name="surname" id="apellido">
-                        </div>
-                        <div class="form-group col-md-12">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" id="email">
-                        </div>
-
-                        <div class="form-group col-md-12">
-                            <label for="message">Mensaje</label>
-                            <textarea class="form-control" id="message" name="message" rows="3"></textarea>
-                        </div>
+<div id="contactanos" class="col-md-4 mt-6 mt-sm-0">
+            <h2 class="text-center">Contactanos</h2>
+            <form action="/" method="post" id="contact_form">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="name">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" id="nombre">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="surname">Apellido</label>
+                        <input type="text" class="form-control" name="apellido" id="apellido">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" name="email" id="email">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="message">Mensaje</label>
+                        <textarea class="form-control" id="mensaje" name="mensaje" rows="4"></textarea>
                         <br>
                         <button type="submit" class="btn btn-primary">Enviar</button>
+                        <span id="feedback"></span>
                     </div>
-                </form>
+            </form>
                 {{#if message}}
                 {{message}}
                 {{/if}}

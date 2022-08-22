@@ -1,5 +1,5 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" data-scroll href="/"> Inicio </a>
             </li>
@@ -12,49 +12,48 @@
                     Nosotros
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Ubicación</a>
+                    <a class="dropdown-item" href="#conocenos">Ubicación</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" data-scroll href="/contacto">Contacto</a>
                 </div>
             </li>
         </ul>
-        <form class="form-inline my-0 my-lg-0">
-            <input class="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search">
-            <button type="button" class="btn btn-outline-primary">Buscar</button>
-        </form>
     </div>
 </nav>
 <div class="container-fluid">
     <div id="home" class="row align-items-center hero">
         <div class="col-lg-4 offset-lg-2">
             <h1>Suplementos Almafuerte.</h1>
-            <p>Les damos la bienvenida a nuestro sitio web, un emprendimiento que se basa en la venta de
+            <p class="parrafo">Les damos la bienvenida a nuestro sitio web, un emprendimiento que se basa en la venta de
                 suplementación deportiva para toda aquella persona que realice una actividad física y quiera lograr su
                 mejor forma.</p>
         </div>
     </div>
     <!-- Novedades -->
-    <div id="novedades" class="row py-3">
-        <div class="col-md-6 offset-md-1 py-3">
-            <h2>Información.</h2>
+    <div id="novedades" class="row py-4">
+        <div class="col-md-4 offset-md-2 py-3">
+            <h2>Novedades</h2>
             <ul class="lista-novedades">
-                <li><a href="#" data-toggle="modal" data-target="#modal1">
-                        <img src="images/prote.png ">¿Para qué sirve la proteina?</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#modal"><img src="/images/creatina.png">¿Para qué sirve
-                        la creatina?</a></li>
+                {{#each novedades}}
+                <li><a href="javascript:void(0);" data-toggle="modal" data-target="#modal{{id}}"><img src="{{imagen}}" width="120">{{titulo}}</a></li>
+                {{/each}}
             </ul>
+
+            <div class="modal-body">
+                <h2>{{ subtitulo }}</h2>
+                <img src="{{imagen}}">
+                <p>{{cuerpo}}</p>
+            </div>
         </div>
-        <!-- Fin de novedades -->
-
-
+        <!-- fin de novedades -->
         <!-- Carrusel -->
-        <div class="col-md-3">
-            <div class="rounded py-2 testimonios">
-                <h2 class="text-center">Clientes:</h2>
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="col-md-4">
+            <div class="rounded py-3 testimonios">
+                <h2 class="text-center">Clientes</h2>
+                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -70,8 +69,7 @@
                             </div>
                         </div>
                     </div>
-                   <div>
-                   <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
@@ -79,109 +77,113 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
-                    </div>
                 </div>
             </div>
             <!-- fin del carrusel -->
             <!-- Modal 1 -->
-            <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            {{#each novedades}}
+            <div class="modal fade" id="modal{{id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                            <h5 class="modal-title" id="exampleModalLabel">{{titulo}}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            Consumir proteína no solo ayuda a prevenir la degradación muscular, sino que también puede
-                            ayudar a desarrollar y fortalecer los músculos. La combinación de ejercicio regular con un
-                            alto consumo de proteínas ayuda a promover el crecimiento muscular y el fortalecimiento.
+                            <h2>{{subtitulo}}</h2>
+                            <p>{{cuerpo}}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary">Comprar</button>
                         </div>
                     </div>
                 </div>
-                <!-- Fin del modal 1 y apertura modal 2-->
             </div>
-            <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+            {{/each}}
+            {{!-- fin modal --}}
+        </div>
+    </div>
+    <!-- Dueños -->
+    <div id="dueños" class="row align-items-center my-4 staff py-4">
+        <div class="col-lg-9 offset-lg-2">
+            <h2 class="text-center">Dueños</h2>
+            <div class="card-deck">
+                <div class="card">
+                    <img src="images/horacio.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Horacio</h5>
+                            <p class="card-text">Soy el encargado de preparar los suplementos para su envio.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/vacuno.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                       <div class="card-body">
+                            <h5 class="card-title">Hernan</h5>
+                            <p class="card-text">Me ocupo de encargar los
+                                productos que seran vendidos.</p>
                         </div>
-                        <div class="modal-body">
-                            Las personas comúnmente usan creatina para mejorar el rendimiento del ejercicio y aumentar
-                            la masa muscular.
-                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/damian.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Damian</h5>
+                        <p class="card-text">Mi
+                            funcion es encargarme de la economia de nuestra empresa,y ademas de
+                            coordinar los envios .</p>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Fin del modal 2 -->
+    </div>
 
-
-        <!-- Dueños y contacto-->
-        <div id="dueños" class="row align-items-center my-3 staff py-2">
-            <div class="col-lg-6 offset-lg-1">
-                <h2>Dueños</h2>
-                <div class="card-deck">
-                    <div class="card">
-                        <img src="images/horacio.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Horacio</h5>
-                            <p class="card-text">Soy el encargado de verificar que todo se realice perfectamente.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="images/vacuno.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Vacuno</h5>
-                            <p class="card-text">Manejo las finanzas de la empresa, y también me ocupo de encargar los
-                                productos para su venta.</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <img src="images/damian.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Damian</h5>
-                            <p class="card-text">Atiendo el local.</p>
-                        </div>
-                    </div>
-                </div>
+    <div id="conocenos" class="row py-4">
+        <div class="col-md-5 offset-md-2">
+            <h2 class="text-left">Visitanos</h2>
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.4412199064386!2d-58.43169458508789!3d-34.567700763099594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb5a12c181347%3A0xcc951cbda99d485e!2sAv.%20del%20Libertador%2C%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1652304625417!5m2!1ses-419!2sar"
+                    style="border:0;" allowfullscreen>
+                </iframe>
             </div>
-             <div id="contactanos" class="col-md-4 mt-4 mt-sm-0">
-                <h2>Contactanos</h2>
-                <form action="/" method="post">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="name">Nombre</label>
-                            <input type="text" class="form-control" name="name" id="nombre">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="surname">Apellido</label>
-                            <input type="text" class="form-control" name="surname" id="apellido">
-                        </div>
-                        <div class="form-group col-md-12">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" id="email">
-                        </div>
+        </div>
+        <div id="contactanos" class="col-md-4 mt-4 mt-sm-0">
+            <h2 class="text-center">Contactanos</h2>
+            <form action="/" method="post" id="contact_form">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="name">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" id="nombre">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="surname">Apellido</label>
+                        <input type="text" class="form-control" name="apellido" id="apellido">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" name="email" id="email" placeholder="...">
+                    </div>
 
-                        <div class="form-group col-md-12">
-                            <label for="message">Mensaje</label>
-                            <textarea class="form-control" id="message" name="message" rows="3"></textarea>
-                        </div>
+                    <div class="form-group col-md-12">
+                        <label for="message">Mensaje</label>
+                        <textarea class="form-control" id="mensaje" name="mensaje" rows="4"></textarea>
                         <br>
                         <button type="submit" class="btn btn-primary">Enviar</button>
+                        <span id="feedback"></span>
                     </div>
-                </form>
-                {{#if message}}
-                {{message}}
-                {{/if}}
-            </div>
+            </form>
+            {{#if message}}
+            {{message}}
+            {{/if}}
         </div>
+    </div>
+</div>
 
-        {{!-- Fin dueños y contacto --}}
+<!-- Fin de dueños -->
+
             
